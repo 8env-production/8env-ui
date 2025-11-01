@@ -1,0 +1,86 @@
+// Переменные для цветов
+$primary-color: #007bff;
+$primary-hover: #0056b3;
+$secondary-color: #6c757d;
+$secondary-hover: #545b62;
+$danger-color: #dc3545;
+$danger-hover: #bd2130;
+
+// Переменные для размеров
+$font-size-small: 12px;
+$font-size-medium: 14px;
+$font-size-large: 16px;
+
+$padding-small: 8px 16px;
+$padding-medium: 10px 20px;
+$padding-large: 12px 24px;
+
+// Основные стили кнопки
+.button {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-block;
+  line-height: 1;
+  transition: all 0.2s ease-in-out;
+
+  &:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  // Варианты
+  &--primary {
+    background-color: $primary-color;
+    color: white;
+
+    &:hover:not(:disabled) {
+      background-color: $primary-hover;
+    }
+  }
+
+  &--secondary {
+    background-color: $secondary-color;
+    color: white;
+
+    &:hover:not(:disabled) {
+      background-color: $secondary-hover;
+    }
+  }
+
+  &--danger {
+    background-color: $danger-color;
+    color: white;
+
+    &:hover:not(:disabled) {
+      background-color: $danger-hover;
+    }
+  }
+
+  // Размеры
+  &--small {
+    font-size: $font-size-small;
+    padding: $padding-small;
+  }
+
+  &--medium {
+    font-size: $font-size-medium;
+    padding: $padding-medium;
+  }
+
+  &--large {
+    font-size: $font-size-large;
+    padding: $padding-large;
+  }
+}

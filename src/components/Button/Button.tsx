@@ -1,5 +1,6 @@
 import React from 'react';
-import './Button.css';
+
+import styles from './Button.module.scss';
 
 export interface ButtonProps {
   /**
@@ -34,7 +35,7 @@ export const Button: React.FC<ButtonProps> = ({
   return (
     <button
       type="button"
-      className={`button button--${variant} button--${size}`}
+      className={`${styles.button} ${styles[`button--${variant}`]} ${styles[`button--${size}`]}`}
       disabled={disabled}
       onClick={onClick}
     >

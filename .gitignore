@@ -40,3 +40,7 @@ yarn-error.log*
 
 # TypeScript
 *.tsbuildinfo
+
+# Скомпилированные CSS из SCSS (должны быть только в dist)
+src/**/*.css
+!src/**/*.module.css
