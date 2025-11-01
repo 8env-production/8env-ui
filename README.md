@@ -1,8 +1,80 @@
-# 8env-ui
+# @8env-ui/components
 
-UI библиотека компонентов для React приложений с полной поддержкой TypeScript.
+UI библиотека компонентов для React приложений с полной поддержкой TypeScript и автоматическим tree-shaking.
 
-## 🚀 Возможности
+## 📦 Использование в проекте
+
+### Установка
+
+Если библиотека опубликована в npm:
+
+```bash
+npm install @8env-ui/components
+```
+
+Или через yarn:
+
+```bash
+yarn add @8env-ui/components
+```
+
+### Использование локальной версии (для разработки)
+
+В директории библиотеки выполните:
+
+```bash
+npm run build
+npm link
+```
+
+Затем в вашем React проекте:
+
+```bash
+npm link @8env-ui/components
+```
+
+### Импорт компонентов
+
+Библиотека использует **принудительный tree-shaking** - каждый компонент импортируется отдельно:
+
+```tsx
+// Импорт компонента Button
+import { Button, ButtonProps } from '@8env-ui/components/button';
+// Импорт стилей компонента
+import '@8env-ui/components/button/styles';
+
+function App() {
+  return (
+    <div>
+      <Button label="Нажми меня" variant="primary" size="medium" />
+    </div>
+  );
+}
+
+export default App;
+```
+
+### TypeScript
+
+Библиотека полностью поддерживает TypeScript и автоматически предоставляет типы:
+
+```tsx
+import { Button, ButtonProps } from '@8env-ui/components/button';
+import '@8env-ui/components/button/styles';
+
+const MyButton: React.FC<ButtonProps> = (props) => {
+  return <Button {...props} />;
+};
+```
+
+### Доступные компоненты
+
+- **Button**: `@8env-ui/components/button`
+  - Стили: `@8env-ui/components/button/styles`
+
+> **Важно:** Корневой импорт `@8env-ui/components` намеренно отключен для обеспечения оптимального размера бандла. Вы должны импортировать каждый компонент отдельно.
+
+## 🚀 Возможности для разработчиков
 
 - ⚛️ React 19 с поддержкой TypeScript
 - 📚 Storybook для разработки и документации компонентов
@@ -17,7 +89,17 @@ UI библиотека компонентов для React приложений
 npm install
 ```
 
-## 🛠️ Разработка
+### Сборка библиотеки
+
+Для создания production сборки:
+
+```bash
+npm run build
+```
+
+Это создаст директорию `dist/` со скомпилированными файлами и автоматически скопирует CSS файлы.
+
+## 🛠️ Разработка компонентов
 
 ### Запуск Storybook
 
@@ -95,8 +177,8 @@ npm run lint:fix
 │   │       ├── Button.tsx          # Компонент
 │   │       ├── Button.css          # Стили
 │   │       ├── Button.test.tsx     # Тесты
-│   │       └── Button.stories.tsx  # Storybook story
-│   └── index.ts           # Точка входа
+│   │       ├── Button.stories.tsx  # Storybook story
+│   │       └── index.ts            # Точка входа компонента
 ├── .eslintrc.cjs          # Конфигурация ESLint
 ├── .prettierrc            # Конфигурация Prettier
 ├── jest.config.js         # Конфигурация Jest
@@ -117,11 +199,28 @@ mkdir -p src/components/MyComponent
    - `MyComponent.css` - стили
    - `MyComponent.test.tsx` - тесты
    - `MyComponent.stories.tsx` - Storybook story
+   - `index.ts` - точка входа компонента
 
-3. Экспортируйте компонент в `src/index.ts`:
+3. Создайте `index.ts` в директории компонента:
 
 ```typescript
-export { MyComponent } from './components/MyComponent/MyComponent';
+export { MyComponent } from './MyComponent';
+export type { MyComponentProps } from './MyComponent';
+```
+
+4. Добавьте экспорт в `package.json`:
+
+```json
+{
+  "exports": {
+    "./my-component": {
+      "types": "./dist/components/MyComponent/index.d.ts",
+      "import": "./dist/components/MyComponent/index.js",
+      "require": "./dist/components/MyComponent/index.js"
+    },
+    "./my-component/styles": "./dist/components/MyComponent/MyComponent.css"
+  }
+}
 ```
 
 ## 📝 Пример компонента

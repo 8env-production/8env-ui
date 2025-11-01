@@ -1,9 +1,27 @@
 {
-  "name": "8env-ui",
+  "name": "@8env-ui/components",
   "version": "0.0.1",
-  "description": "",
-  "main": "index.js",
+  "description": "UI библиотека компонентов для React приложений с полной поддержкой TypeScript",
+  "exports": {
+    "./button": {
+      "types": "./dist/components/Button/index.d.ts",
+      "import": "./dist/components/Button/index.js",
+      "require": "./dist/components/Button/index.js"
+    },
+    "./button/styles": "./dist/components/Button/Button.css",
+    "./styles": "./dist/components/Button/Button.css"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "sideEffects": [
+    "*.css"
+  ],
   "scripts": {
+    "build": "tsc -p tsconfig.build.json && npm run copy-styles",
+    "copy-styles": "find src -name '*.css' -exec sh -c 'mkdir -p dist/$(dirname ${1#src/}) && cp $1 dist/${1#src/}' _ {} \\;",
+    "prepublishOnly": "npm run build",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
@@ -52,8 +70,6 @@
     "jest-environment-jsdom": "^30.2.0",
     "lint-staged": "^16.2.6",
     "prettier": "^3.6.2",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
     "storybook": "^8.6.14",
     "ts-jest": "^29.4.5",
     "typescript": "^5.9.3",
@@ -67,5 +83,13 @@
     "*.{json,md}": [
       "prettier --write"
     ]
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
+  },
+  "dependencies": {
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
   }
 }
