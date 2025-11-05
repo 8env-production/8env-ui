@@ -1,0 +1,140 @@
+/* Основной контейнер для изменяемого по размеру элемента */
+.resizable {
+    position: relative;
+    z-index: 1000;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Контейнер с правым ресайзером */
+.rightResizer {
+    padding-right: 1rem;
+}
+
+/* Контейнер с левым ресайзером */
+.leftResizer {
+    padding-left: 1rem;
+}
+
+/* Контентная область с возможностью скролла */
+.content {
+    flex: 1;
+    overflow: auto;
+    min-height: 0; /* Важно для корректной работы flex и overflow */
+}
+
+/* Базовые стили для элемента управления изменением размера */
+.resizer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1rem;
+    height: 100%;
+    background-color: transparent;
+    position: absolute;
+    top: 0;
+    cursor: col-resize; /* Изменен курсор для лучшего UX */
+    overflow: hidden;
+    border-right: 1px solid var(--border-main-color);
+    border-left: 1px solid var(--border-main-color);
+    box-sizing: border-box;
+    /* Добавляем переходы для плавности */
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease;
+    /* Улучшаем доступность */
+    outline: none;
+}
+
+/* Правый ресайзер */
+.resizerRight {
+    right: 0;
+}
+
+/* Левый ресайзер */
+.resizerLeft {
+    left: 0;
+}
+
+/* Состояние при фокусе (для клавиатурной навигации) */
+.resizer:focus {
+    background-color: var(--background-dark);
+    border-color: var(--border-active-color);
+    box-shadow: 0 0 0 2px var(--color-brand);
+}
+
+/* Состояние при активном изменении размера */
+.resizer:active {
+    background-color: var(--background-secondary);
+}
+
+/* Иконка элемента управления */
+.resizerIcon {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    /* Плавный переход для иконки */
+    transition:
+        transform 0.2s ease,
+        opacity 0.2s ease;
+    opacity: 0.85;
+}
+
+/* Анимация иконки при наведении */
+.resizer:hover .resizerIcon {
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+/* Стили для иконки */
+.resizerIcon path {
+    color: var(--text-color-accent);
+    transition: color 0.2s ease;
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 768px) {
+    .resizer {
+        width: 1.5rem; /* Увеличиваем размер для мобильных устройств */
+    }
+
+    .resizerIcon {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+/* Анимация для плавного появления */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.resizable {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Состояние при отключенном компоненте */
+.resizer[data-disabled='true'] {
+    cursor: not-allowed !important;
+    opacity: 0.5 !important;
+    pointer-events: none !important;
+}
+
+.resizer[data-disabled='true']:hover,
+.resizer[data-disabled='true']:focus,
+.resizer[data-disabled='true']:active {
+    background-color: transparent !important;
+    border-color: var(--border-main-color) !important;
+    box-shadow: none !important;
+}
+
+.resizer[data-disabled='true'] .resizerIcon {
+    opacity: 0.3 !important;
+    transform: none !important;
+}
