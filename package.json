@@ -1,6 +1,6 @@
 {
   "name": "@8env-ui/components",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "UI библиотека компонентов для React приложений с полной поддержкой TypeScript",
   "exports": {
     "./button": {
