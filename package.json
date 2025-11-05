@@ -8,6 +8,11 @@
       "import": "./dist/components/Button/index.js",
       "require": "./dist/components/Button/index.js"
     },
+    "./icon": {
+      "types": "./dist/components/Icon/index.d.ts",
+      "import": "./dist/components/Icon/index.js",
+      "require": "./dist/components/Icon/index.js"
+    },
     "./context": {
       "types": "./dist/context/index.d.ts",
       "import": "./dist/context/index.js",

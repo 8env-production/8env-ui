@@ -44,6 +44,11 @@
   // Border radius
   --border-radius-50: 0.5rem;
   
+  // Icon sizes
+  --icon-size-s: 1rem;
+  --icon-size-m: 1.5rem;
+  --icon-size-l: 2rem;
+  
   // Brand градиенты для светлой темы
   --color-brand-50: rgb(255 249 239);
   --color-brand-100: rgb(255 245 231);
@@ -123,6 +128,11 @@
   
   // Border radius (одинаковый для обеих тем)
   --border-radius-50: 0.5rem;
+  
+  // Icon sizes (одинаковые для обеих тем)
+  --icon-size-s: 1rem;
+  --icon-size-m: 1.5rem;
+  --icon-size-l: 2rem;
   
   // Brand градиенты для темной темы (инвертированные)
   --color-brand-50: rgb(56 45 40);

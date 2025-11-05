@@ -1,0 +1,30 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: inherit;
+  line-height: 1;
+}
+
+.root svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: inherit;
+}
+
+.size_s {
+  width: var(--icon-size-s);
+  height: var(--icon-size-s);
+}
+
+.size_m {
+  width: var(--icon-size-m);
+  height: var(--icon-size-m);
+}
+
+.size_l {
+  width: var(--icon-size-l);
+  height: var(--icon-size-l);
+}

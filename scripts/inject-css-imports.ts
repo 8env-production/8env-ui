@@ -17,6 +17,7 @@ function main(): void {
   const specialRules: Record<string, string> = {
     'context/ThemeContext': 'styles/theme.css',
     'components/Button/Button': 'components/Button/Button.css',
+    'components/Icon/Icon': 'components/Icon/Icon.css',
   };
 
   const { injectedCount, results } = processDirectory(distDir, specialRules);
