@@ -19,6 +19,7 @@ function main(): void {
     'components/Button/Button': 'components/Button/Button.css',
     'components/Icon/Icon': 'components/Icon/Icon.css',
     'components/Logo/Logo': 'components/Logo/Logo.css',
+    'components/Modal/Modal': 'components/Modal/Modal.css',
   };
 
   const { injectedCount, results } = processDirectory(distDir, specialRules);

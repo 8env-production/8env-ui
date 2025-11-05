@@ -15,9 +15,6 @@ export { Loader } from './Loader/Loader';
 export { Icon } from './Icon/Icon';
 export type { IconProps } from './Icon/Icon';
 
-export { Modal } from './Modal';
-export type { ModalProps } from './Modal';
-
 export { Logo } from './Logo';
 
 export { UserPic } from './UserPic';

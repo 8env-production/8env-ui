@@ -8,6 +8,7 @@ export default defineConfig({
     lib: {
       entry: {
         'components/Button/index': resolve(__dirname, 'src/components/Button/index.ts'),
+        'components/Modal/index': resolve(__dirname, 'src/components/Modal/index.ts'),
         'components/Navigation/index': resolve(__dirname, 'src/components/Navigation/index.ts'),
         'context/index': resolve(__dirname, 'src/context/index.ts'),
         'hooks/index': resolve(__dirname, 'src/hooks/index.ts'),
