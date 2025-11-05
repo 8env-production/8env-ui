@@ -1,0 +1,142 @@
+.root {
+    width: 100%;
+}
+
+.tabList {
+    display: flex;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.tabList.fullWidth .tab {
+    flex: 1;
+}
+
+/* Варианты табов */
+.variant_default {
+    background: var(--background-secondary);
+}
+
+.variant_pills {
+    background: none;
+    border: none;
+    gap: 0.5rem;
+    margin: 0.5rem;
+}
+
+.variant_underline {
+    background: var(--background-secondary);
+    border: none;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Размеры */
+.size_small {
+    font-size: 0.875rem;
+}
+
+.size_medium {
+    font-size: 1rem;
+}
+
+.size_large {
+    font-size: 1.125rem;
+}
+
+/* Стили табов */
+.tab {
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 0.75rem 1rem;
+    color: var(--text-color-secondary);
+    font-size: inherit;
+    font-family: inherit;
+    position: relative;
+    border-radius: 0;
+    white-space: nowrap;
+}
+
+.tab:focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: -2px;
+}
+
+.tab.active {
+    color: var(--color-brand);
+    font-weight: 500;
+}
+
+.tab.disabled {
+    color: var(--text-color-disabled);
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+/* Размеры табов */
+.tabSize_small {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+}
+
+.tabSize_medium {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+}
+
+.tabSize_large {
+    padding: 1rem 1.25rem;
+    font-size: 1.125rem;
+}
+
+.variant_default .tab.active {
+    background: var(--background-main);
+}
+
+/* Стили для варианта pills */
+.variant_pills .tab {
+    border-radius: var(--border-radius-100);
+}
+
+.variant_pills .tab.active {
+    background: var(--color-brand);
+    color: var(--text-color-brand-background);
+}
+
+.variant_pills .tab:hover:not(.disabled):not(.active) {
+    background: var(--background-secondary);
+}
+
+/* Стили для варианта underline */
+.variant_underline .tab {
+    border-bottom: 2px solid transparent;
+    border-radius: 0;
+    margin-bottom: -1px;
+}
+
+.variant_underline .tab.active {
+    border-bottom-color: var(--color-brand);
+}
+
+/* Панель контента */
+.tabPanel {
+    min-height: 0;
+    flex: 1;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .tabList {
+        overflow-x: auto;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .tabList::-webkit-scrollbar {
+        display: none;
+    }
+
+    .tab {
+        flex-shrink: 0;
+    }
+}

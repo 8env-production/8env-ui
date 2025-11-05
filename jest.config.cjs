@@ -21,7 +21,7 @@ module.exports = {
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
-    // Игнорируем импорты CSS/SCSS файлов
-    '\\.(css|scss)$': '<rootDir>/jest.styleMock.js',
+    // Используем identity-obj-proxy для CSS модулей
+    '\\.(css|scss)$': 'identity-obj-proxy',
   },
 };

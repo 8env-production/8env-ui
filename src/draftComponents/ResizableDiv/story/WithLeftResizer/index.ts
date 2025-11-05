@@ -1,0 +1,1 @@
+export { WithLeftResizerComponent } from './WithLeftResizer';

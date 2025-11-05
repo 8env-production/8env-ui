@@ -23,11 +23,26 @@
   --color-danger: #dc3545;
   --color-danger-hover: #bd2130;
   
+  // Success - зеленые оттенки
+  --color-success: #28a745;
+  --color-success-hover: #218838;
+  
   // Текст и фон
   --color-text: #212529;
+  --color-text-main: #212529;
+  --color-text-brand-background: #ffffff;
+  --color-text-success-background: #ffffff;
+  --color-text-danger-background: #ffffff;
   --color-background: #ffffff;
+  --color-background-secondary: #f8f9fa;
   --color-surface: #f8f9fa;
   --color-border: #dee2e6;
+  
+  // Brand alias
+  --color-brand: var(--color-brand-550);
+  
+  // Border radius
+  --border-radius-50: 0.5rem;
   
   // Brand градиенты для светлой темы
   --color-brand-50: rgb(255 249 239);
@@ -88,11 +103,26 @@
   --color-danger: #ff6b6b;
   --color-danger-hover: #fa5252;
   
+  // Success - зеленые оттенки для темной темы
+  --color-success: #51cf66;
+  --color-success-hover: #40c057;
+  
   // Текст и фон
   --color-text: #f8f9fa;
+  --color-text-main: #f8f9fa;
+  --color-text-brand-background: #1a1b1e;
+  --color-text-success-background: #1a1b1e;
+  --color-text-danger-background: #ffffff;
   --color-background: rgb(34 29 34);
+  --color-background-secondary: #25262b;
   --color-surface: #25262b;
   --color-border: #373a40;
+  
+  // Brand alias
+  --color-brand: var(--color-brand-550);
+  
+  // Border radius (одинаковый для обеих тем)
+  --border-radius-50: 0.5rem;
   
   // Brand градиенты для темной темы (инвертированные)
   --color-brand-50: rgb(56 45 40);

@@ -1,86 +1,165 @@
-// Переменные для цветов (используем CSS переменные из темы)
-$primary-color: var(--color-primary);
-$primary-hover: var(--color-primary-hover);
-$secondary-color: var(--color-secondary);
-$secondary-hover: var(--color-secondary-hover);
-$danger-color: var(--color-danger);
-$danger-hover: var(--color-danger-hover);
-
-// Переменные для размеров
-$font-size-small: 0.75rem;
-$font-size-medium: 0.875rem;
-$font-size-large: 1rem;
-
-$padding-small: 0.5rem 1rem;
-$padding-medium: 0.625rem 1.25rem;
-$padding-large: 0.75rem 1.5rem;
-
-// Основные стили кнопки
-.button {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+.root {
+  background: none;
+  outline: none;
+  border: none;
+  border-radius: var(--border-radius-50);
+  font-family: var(--font-family-sans);
+  font-size: 1rem;
   font-weight: 500;
-  border: 0;
-  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
   cursor: pointer;
-  display: inline-block;
-  line-height: 1;
+  color: var(--color-text-main);
+  box-sizing: border-box;
   transition: all 0.2s ease-in-out;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 
   &:hover:not(:disabled) {
-    transform: translateY(-0.0625rem);
-    box-shadow: var(--shadow-md);
+    opacity: 0.9;
   }
 
   &:active:not(:disabled) {
-    transform: translateY(0);
+    transform: scale(0.95);
   }
 
   &:disabled {
     opacity: 0.5;
     cursor: not-allowed;
   }
+}
 
-  // Варианты
-  &--primary {
-    background-color: $primary-color;
-    color: white;
+.noPaddings {
+  padding: 0.5rem 0;
+}
 
-    &:hover:not(:disabled) {
-      background-color: $primary-hover;
-    }
+.withoutAnimation:active {
+  transform: none;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+// Варианты отображения
+
+.default {
+  background: var(--color-background-secondary);
+}
+
+.action {
+  background: var(--color-brand);
+  color: var(--color-text-brand-background);
+}
+
+.success {
+  background: var(--color-success);
+  color: var(--color-text-success-background);
+}
+
+.danger {
+  background: var(--color-danger);
+  color: var(--color-text-danger-background);
+}
+
+// Outlined варианты
+
+.outlined,
+.outlinedSuccess,
+.outlinedDanger {
+  background: transparent;
+  color: var(--color-brand);
+  border: 1px solid var(--color-brand);
+  padding: calc(0.5rem - 1px) calc(1rem - 1px);
+
+  svg,
+  path {
+    color: var(--color-brand);
   }
+}
 
-  &--secondary {
-    background-color: $secondary-color;
-    color: white;
+.outlinedSuccess {
+  color: var(--color-success);
+  border-color: var(--color-success);
 
-    &:hover:not(:disabled) {
-      background-color: $secondary-hover;
-    }
+  svg,
+  path {
+    color: var(--color-success);
   }
+}
 
-  &--danger {
-    background-color: $danger-color;
-    color: white;
+.outlinedDanger {
+  color: var(--color-danger);
+  border-color: var(--color-danger);
 
-    &:hover:not(:disabled) {
-      background-color: $danger-hover;
-    }
+  svg,
+  path {
+    color: var(--color-danger);
   }
+}
 
-  // Размеры
-  &--small {
-    font-size: $font-size-small;
-    padding: $padding-small;
-  }
+// Flat варианты
 
-  &--medium {
-    font-size: $font-size-medium;
-    padding: $padding-medium;
-  }
+.flat {
+  background: transparent;
+  color: var(--color-text-main);
+}
 
-  &--large {
-    font-size: $font-size-large;
-    padding: $padding-large;
+.flatDanger {
+  background: transparent;
+  color: var(--color-danger);
+
+  svg,
+  path {
+    color: var(--color-danger);
   }
+}
+
+.flatSuccess {
+  background: transparent;
+  color: var(--color-success);
+
+  svg,
+  path {
+    color: var(--color-success);
+  }
+}
+
+.flatAction {
+  background: transparent;
+  color: var(--color-brand);
+
+  svg,
+  path {
+    color: var(--color-brand);
+  }
+}
+
+// Дополнительные модификаторы
+
+.iconButton {
+  height: 2rem;
+  width: 2rem;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.withEllipsis {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.textAlign_left {
+  text-align: left;
+  justify-content: flex-start;
+}
+
+.textAlign_center {
+  text-align: center;
+  justify-content: center;
 }

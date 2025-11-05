@@ -1,0 +1,122 @@
+.container {
+    padding: 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.title {
+    margin: 0 0 16px 0;
+    color: var(--success);
+}
+
+.currentWidthBlock {
+    padding: 12px;
+    background-color: var(--background-dark);
+    border-radius: var(--border-radius-50);
+    border: 1px solid var(--success);
+}
+
+.persistenceSection {
+    padding: 12px;
+    background-color: var(--background-dark);
+    border-radius: var(--border-radius-50);
+    border: 1px solid var(--border-active-color);
+}
+
+.persistenceTitle {
+    margin: 0 0 12px 0;
+    color: var(--text-color-main);
+    font-size: 14px;
+}
+
+.persistenceControls {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.checkboxLabel {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-color-main);
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.checkbox {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--color-brand);
+}
+
+.persistenceInfo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px;
+    background-color: var(--success-background);
+    border-radius: 4px;
+    border: 1px solid var(--success);
+}
+
+.persistenceInfo small {
+    color: var(--success);
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+}
+
+.clearButton {
+    padding: 4px 8px;
+    background-color: var(--danger);
+    color: var(--text-color-danger-background);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: opacity 0.2s ease;
+}
+
+.clearButton:hover {
+    opacity: 0.8;
+}
+
+.logsSection {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.logsTitle {
+    margin: 0 0 12px 0;
+    font-size: 16px;
+}
+
+.logsContainer {
+    flex: 1;
+    background-color: var(--background-dark);
+    border-radius: var(--border-radius-50);
+    border: 1px solid var(--border-main-color);
+    padding: 12px;
+    overflow: auto;
+    font-family: monospace;
+    font-size: 12px;
+}
+
+.emptyLogsMessage {
+    color: var(--text-color-secondary);
+    font-style: italic;
+}
+
+.logEntry {
+    margin-bottom: 4px;
+}
+
+.logEntryLatest {
+    color: var(--success);
+}
+
+.logEntryOld {
+    color: var(--text-color-secondary);
+}

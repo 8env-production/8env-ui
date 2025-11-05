@@ -1,0 +1,36 @@
+.root {
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    flex-direction: column;
+}
+
+.input {
+    width: 100%;
+    background: var(--input-background-color);
+    color: var(--text-color-main);
+    outline: none;
+    font-size: 1rem;
+    padding: 0.5rem;
+    border-radius: var(--border-radius-50);
+    border: 2px solid var(--border-main-color);
+    box-sizing: border-box;
+    font-family: 'Ubuntu Mono', sans-serif;
+    letter-spacing: 1px;
+}
+
+.input:active,
+.input:focus {
+    border: 2px solid var(--border-active-color);
+    background: none;
+}
+
+.label {
+}
+
+.input:focus ~ .label {
+    color: var(--text-color-accent);
+}
