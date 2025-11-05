@@ -22,3 +22,7 @@ export type { UserPicProps } from './UserPic';
 
 export { Tabs, Tab } from './Tabs';
 export type { TabsProps, TabProps } from './Tabs';
+
+// Re-export Preview from shared components
+export { Preview } from '../components/Preview';
+export type { PreviewProps } from '../components/Preview';

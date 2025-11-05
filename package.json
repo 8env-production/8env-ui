@@ -33,6 +33,11 @@
       "import": "./dist/components/Navigation/index.js",
       "require": "./dist/components/Navigation/index.js"
     },
+    "./preview": {
+      "types": "./dist/components/Preview/index.d.ts",
+      "import": "./dist/components/Preview/index.js",
+      "require": "./dist/components/Preview/index.js"
+    },
     "./context": {
       "types": "./dist/context/index.d.ts",
       "import": "./dist/context/index.js",

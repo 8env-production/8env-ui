@@ -94,7 +94,6 @@
   --shadow-sm: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.12);
   --shadow-md: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.15);
   --shadow-lg: 0 0.25rem 1rem rgba(0, 0, 0, 0.2);
-
   // Компонент Navigation (светлая тема)
   --component-navigation-width: 3rem;
   --component-navigation-background: var(--color-background-secondary);
@@ -106,6 +105,16 @@
   --component-navigation-accent-color: var(--color-brand);
   --component-navigation-bottom-gap: 0.5rem;
   --component-navigation-bottom-padding: 0.5rem 0 0;
+
+  /* Legacy aliases for draft components — keep compatibility */
+  --background-main: var(--color-surface);
+  --background-dark: var(--color-background-secondary);
+  --background-secondary: var(--color-background-secondary);
+  --border-main-color: var(--color-border);
+  --border-radius-100: 1rem;
+  --text-color-secondary: var(--color-secondary);
+  --text-size-secondary: 0.875rem;
+  --shadow-color: rgba(0, 0, 0, 0.12);
 }
 
 // Тёмная тема

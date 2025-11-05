@@ -7,3 +7,4 @@ export * from './Icon';
 export * from './Loader';
 export * from './SolidLoader';
 export * from './ResizableDiv';
+export * from './Preview';
