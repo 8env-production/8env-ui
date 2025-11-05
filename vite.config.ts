@@ -8,8 +8,13 @@ export default defineConfig({
     lib: {
       entry: {
         'components/Button/index': resolve(__dirname, 'src/components/Button/index.ts'),
+        'components/Icon/index': resolve(__dirname, 'src/components/Icon/index.ts'),
+        'components/Loader/index': resolve(__dirname, 'src/components/Loader/index.ts'),
+        'components/Logo/index': resolve(__dirname, 'src/components/Logo/index.ts'),
         'components/Modal/index': resolve(__dirname, 'src/components/Modal/index.ts'),
         'components/Navigation/index': resolve(__dirname, 'src/components/Navigation/index.ts'),
+        'components/Preview/index': resolve(__dirname, 'src/components/Preview/index.ts'),
+        'components/UserPic/index': resolve(__dirname, 'src/components/UserPic/index.ts'),
         'context/index': resolve(__dirname, 'src/context/index.ts'),
         'hooks/index': resolve(__dirname, 'src/hooks/index.ts'),
         'types/index': resolve(__dirname, 'src/types/index.ts'),
