@@ -18,7 +18,10 @@ export const SolidLoader: FC<SolidLoaderProps> = ({
 }) => {
     return (
         <div className={cn(styles.root, className)}>
-            <div className={cn(styles.loader, { [styles.hidden]: !isLoading })}>
+            <div
+                data-testid="solid-loader-overlay"
+                className={cn(styles.loader, { [styles.hidden]: !isLoading })}
+            >
                 <Loader />
             </div>
             {children}

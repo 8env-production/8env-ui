@@ -18,25 +18,23 @@ describe('Icon', () => {
 
   it('по умолчанию применяет размер m', () => {
     render(
-      <Icon>
-        <svg role="img" aria-label="Icon" />
+      <Icon data-testid="icon-wrapper">
+        <svg />
       </Icon>,
     );
 
-    const wrapper = screen.getByRole('img').parentElement;
-    expect(wrapper).not.toBeNull();
+    const wrapper = screen.getByTestId('icon-wrapper');
     expect(wrapper).toHaveAttribute('data-size', 'm');
   });
 
   it('применяет модификатор размера', () => {
     render(
-      <Icon size="l">
-        <svg role="img" aria-label="Icon" />
+      <Icon size="l" data-testid="icon-wrapper">
+        <svg />
       </Icon>,
     );
 
-    const wrapper = screen.getByRole('img').parentElement;
-    expect(wrapper).not.toBeNull();
+    const wrapper = screen.getByTestId('icon-wrapper');
     expect(wrapper).toHaveAttribute('data-size', 'l');
   });
 

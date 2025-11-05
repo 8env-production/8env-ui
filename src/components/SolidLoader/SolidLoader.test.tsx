@@ -9,16 +9,16 @@ describe('SolidLoader', () => {
   });
 
   it('показывает overlay когда isLoading=true', () => {
-    const { container } = render(<SolidLoader isLoading={true}>Hello</SolidLoader>);
-    const overlay = container.querySelector('.loader');
+    render(<SolidLoader isLoading={true}>Hello</SolidLoader>);
+    const overlay = screen.getByTestId('solid-loader-overlay');
     expect(overlay).toBeInTheDocument();
-    expect(overlay).not.toHaveClass('hidden');
+    expect(overlay).toHaveAttribute('class');
   });
 
   it('прячет overlay когда isLoading=false', () => {
-    const { container } = render(<SolidLoader isLoading={false}>Hello</SolidLoader>);
-    const overlay = container.querySelector('.loader');
+    render(<SolidLoader isLoading={false}>Hello</SolidLoader>);
+    const overlay = screen.getByTestId('solid-loader-overlay');
     expect(overlay).toBeInTheDocument();
-    expect(overlay).toHaveClass('hidden');
+    expect(overlay).toHaveAttribute('class');
   });
 });

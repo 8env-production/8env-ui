@@ -93,15 +93,21 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>((props, r
   } = props;
 
   const id = `textarea-${useId()}-${props.name || 'field'}`;
+  const isControlled = value !== undefined;
 
   const onKeyDown: KeyboardEventHandler<HTMLTextAreaElement> = useCallback(
     (event) => {
       if (onSubmit && event.ctrlKey && event.key === 'Enter') {
         event.preventDefault();
         onSubmit();
+        
+        // Очищаем значение в неконтролируемом режиме
+        if (!isControlled && event.currentTarget) {
+          event.currentTarget.value = '';
+        }
       }
     },
-    [onSubmit]
+    [onSubmit, isControlled]
   );
 
   const onChangeHandler: ChangeEventHandler<HTMLTextAreaElement> = useCallback(

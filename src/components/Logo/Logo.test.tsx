@@ -44,12 +44,13 @@ describe('Logo', () => {
   });
 
   it('учитывает кастомные классы и стили', () => {
-    const customStyle = { '--logo-size': '3rem' } as CSSProperties;
-    const { container } = render(<Logo className="custom-class" style={customStyle} />);
+    const customStyle = { color: 'red' } as CSSProperties;
+    const { container } = render(<Logo className="custom-class" style={customStyle} size="3rem" />);
     const element = container.querySelector('span');
 
     expect(element).toHaveClass('custom-class');
     expect(element?.style.getPropertyValue('--logo-size')).toBe('3rem');
+    expect(element?.style.color).toBe('red');
   });
 
   it('отключает бордер и тень при соответствующих пропсах', () => {

@@ -63,12 +63,12 @@ describe('TextInput', () => {
     });
 
     it('синхронизирует внешнее значение с внутренним состоянием', () => {
-      const { rerender } = render(<TextInput value="" />);
+      const { rerender } = render(<TextInput value="" readOnly />);
       const input = screen.getByRole('textbox');
 
       expect(input).toHaveValue('');
 
-      rerender(<TextInput value="External update" />);
+      rerender(<TextInput value="External update" readOnly />);
       expect(input).toHaveValue('External update');
     });
   });
@@ -396,7 +396,7 @@ describe('TextInput', () => {
 
   describe('Крайние случаи', () => {
     it('обрабатывает пустое значение', () => {
-      render(<TextInput value="" />);
+      render(<TextInput value="" readOnly />);
       expect(screen.getByRole('textbox')).toHaveValue('');
     });
 

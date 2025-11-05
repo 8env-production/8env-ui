@@ -9,7 +9,7 @@ import {
   useState,
 } from 'react';
 
-import ReactDOM from 'react-dom';
+import { createPortal } from 'react-dom';
 import cn from 'classnames';
 
 import styles from './Modal.module.scss';
@@ -386,7 +386,7 @@ export const Modal = (props: ModalProps) => {
     </div>
   );
 
-  return ReactDOM.createPortal(modalContent, mountNode);
+  return createPortal(modalContent, mountNode);
 };
 
 Modal.displayName = 'Modal';
