@@ -8,6 +8,7 @@ export default defineConfig({
     lib: {
       entry: {
         'components/Button/index': resolve(__dirname, 'src/components/Button/index.ts'),
+        'components/Navigation/index': resolve(__dirname, 'src/components/Navigation/index.ts'),
         'context/index': resolve(__dirname, 'src/context/index.ts'),
         'hooks/index': resolve(__dirname, 'src/hooks/index.ts'),
         'types/index': resolve(__dirname, 'src/types/index.ts'),
@@ -40,9 +41,24 @@ export default defineConfig({
               return 'styles/index.css';
             }
 
-            // Для CSS Modules компонентов (содержат .module в имени)
-            if (name.includes('.module') || name.includes('Button')) {
-              return 'components/Button/Button.css';
+            const originalFile = assetInfo.originalFileName ?? '';
+
+            // Для CSS Modules компонентов
+            if (originalFile.includes('components/')) {
+              const parts = originalFile.split('/');
+              const componentsIndex = parts.lastIndexOf('components');
+              const componentName = parts[componentsIndex + 1];
+              if (componentName) {
+                return `components/${componentName}/${componentName}.css`;
+              }
+            }
+
+            if (name.includes('.module')) {
+              const moduleMatch = name.match(/([A-Za-z0-9]+)\.module/i);
+              if (moduleMatch) {
+                const componentName = moduleMatch[1];
+                return `components/${componentName}/${componentName}.css`;
+              }
             }
 
             // Резервное имя для остальных CSS

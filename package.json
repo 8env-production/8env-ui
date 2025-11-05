@@ -23,6 +23,11 @@
       "import": "./dist/components/Loader/index.js",
       "require": "./dist/components/Loader/index.js"
     },
+    "./navigation": {
+      "types": "./dist/components/Navigation/index.d.ts",
+      "import": "./dist/components/Navigation/index.js",
+      "require": "./dist/components/Navigation/index.js"
+    },
     "./context": {
       "types": "./dist/context/index.d.ts",
       "import": "./dist/context/index.js",

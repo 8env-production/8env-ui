@@ -93,6 +93,18 @@
   --shadow-sm: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.12);
   --shadow-md: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.15);
   --shadow-lg: 0 0.25rem 1rem rgba(0, 0, 0, 0.2);
+
+  // Компонент Navigation (светлая тема)
+  --component-navigation-width: 3rem;
+  --component-navigation-background: var(--color-background-secondary);
+  --component-navigation-border-color: var(--color-border);
+  --component-navigation-top-gap: 1rem;
+  --component-navigation-logo-padding-top: 1rem;
+  --component-navigation-user-padding: 0.5rem 0 1rem;
+  --component-navigation-bottom-padding-top: 2rem;
+  --component-navigation-accent-color: var(--color-brand);
+  --component-navigation-bottom-gap: 0.5rem;
+  --component-navigation-bottom-padding: 0.5rem 0 0;
 }
 
 // Тёмная тема
@@ -179,6 +191,18 @@
   --shadow-sm: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.3);
   --shadow-md: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.4);
   --shadow-lg: 0 0.25rem 1rem rgba(0, 0, 0, 0.5);
+
+  // Компонент Navigation (тёмная тема)
+  --component-navigation-width: 3rem;
+  --component-navigation-background: var(--color-background-secondary);
+  --component-navigation-border-color: var(--color-border);
+  --component-navigation-top-gap: 1rem;
+  --component-navigation-logo-padding-top: 1rem;
+  --component-navigation-user-padding: 0.5rem 0 1rem;
+  --component-navigation-bottom-padding-top: 2rem;
+  --component-navigation-accent-color: var(--color-brand);
+  --component-navigation-bottom-gap: 0.5rem;
+  --component-navigation-bottom-padding: 0.5rem 0 0;
 }
 
 // Опциональные глобальные стили для body

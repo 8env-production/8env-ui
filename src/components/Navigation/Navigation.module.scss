@@ -1,0 +1,114 @@
+.root {
+  width: var(--navigation-width, var(--component-navigation-width, 3rem));
+  min-width: var(--navigation-width, var(--component-navigation-width, 3rem));
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  background-color: var(
+    --navigation-background,
+    var(--component-navigation-background, var(--color-background-secondary))
+  );
+  border-right: 1px solid
+    var(
+      --navigation-border-color,
+      var(--component-navigation-border-color, var(--color-border))
+    );
+}
+
+.top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(
+    --navigation-top-gap,
+    var(--component-navigation-top-gap, 1rem)
+  );
+  width: 100%;
+  padding: var(--navigation-top-padding, 0);
+}
+
+.item,
+.logo,
+.user {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  padding-top: var(
+    --navigation-logo-padding-top,
+    var(--component-navigation-logo-padding-top, 1rem)
+  );
+}
+
+.user {
+  padding: var(
+    --navigation-user-padding,
+    var(--component-navigation-user-padding, 0.5rem 0 1rem)
+  );
+}
+
+.bottom {
+  width: 100%;
+  padding-top: var(
+    --navigation-bottom-padding-top,
+    var(--component-navigation-bottom-padding-top, 2rem)
+  );
+}
+
+.bottomAccent {
+  width: 100%;
+  display: block;
+  position: relative;
+  top: 2px;
+  transform: rotate(180deg);
+  color: var(
+    --navigation-accent-color,
+    var(--component-navigation-accent-color, var(--color-brand))
+  );
+}
+
+.accentPath {
+  filter: drop-shadow(0 0 2px currentColor);
+}
+
+.bottomContent {
+  width: 100%;
+  background-color: var(
+    --navigation-accent-color,
+    var(--component-navigation-accent-color, var(--color-brand))
+  );
+  color: var(
+    --navigation-accent-content-color,
+    var(
+      --component-navigation-accent-content-color,
+      var(--color-text-brand-background)
+    )
+  );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(
+    --navigation-bottom-gap,
+    var(--component-navigation-bottom-gap, 0.5rem)
+  );
+  padding: var(
+    --navigation-bottom-padding,
+    var(--component-navigation-bottom-padding, 0.5rem 0 0)
+  );
+  box-sizing: border-box;
+}
+
+.bottomItem {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
