@@ -1,0 +1,55 @@
+.root {
+  --logo-size-local: var(--logo-size, 2.5rem);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--logo-size-local);
+  height: var(--logo-size-local);
+  min-width: var(--logo-size-local);
+  min-height: var(--logo-size-local);
+  border-radius: var(--border-radius-50, 0.5rem);
+  color: var(--color-text-brand-background, #ffffff);
+  background-color: transparent;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+  text-decoration: none;
+  user-select: none;
+}
+
+.icon {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.symbol {
+  color: inherit;
+}
+
+.withBorder {
+  border: 1px solid var(--color-brand-600, #e9ae56);
+}
+
+.withShadow {
+  box-shadow: var(--shadow-md, 0 6px 24px rgba(0, 0, 0, 0.1));
+}
+
+.interactive {
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+    filter: brightness(0.97);
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow:
+      0 0 0 0.125rem var(--color-background, #ffffff),
+      0 0 0 0.3125rem var(--color-brand-alpha-40, rgba(255, 190, 92, 0.4));
+  }
+}

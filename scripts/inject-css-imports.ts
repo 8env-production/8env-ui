@@ -18,6 +18,7 @@ function main(): void {
     'context/ThemeContext': 'styles/theme.css',
     'components/Button/Button': 'components/Button/Button.css',
     'components/Icon/Icon': 'components/Icon/Icon.css',
+    'components/Logo/Logo': 'components/Logo/Logo.css',
   };
 
   const { injectedCount, results } = processDirectory(distDir, specialRules);

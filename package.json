@@ -13,6 +13,11 @@
       "import": "./dist/components/Icon/index.js",
       "require": "./dist/components/Icon/index.js"
     },
+    "./logo": {
+      "types": "./dist/components/Logo/index.d.ts",
+      "import": "./dist/components/Logo/index.js",
+      "require": "./dist/components/Logo/index.js"
+    },
     "./context": {
       "types": "./dist/context/index.d.ts",
       "import": "./dist/context/index.js",
