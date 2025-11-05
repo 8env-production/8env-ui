@@ -1,0 +1,69 @@
+# Исходный код (публикуем только dist)
+src/
+
+# Конфигурационные файлы
+.storybook/
+.husky/
+.vscode/
+.idea/
+
+# Тесты
+**/*.test.ts
+**/*.test.tsx
+**/*.spec.ts
+**/*.spec.tsx
+jest.config.js
+jest.setup.js
+coverage/
+
+# Storybook
+**/*.stories.tsx
+**/*.stories.ts
+storybook-static/
+
+# Конфигурация разработки
+tsconfig.json
+tsconfig.build.json
+vite.config.ts
+eslint.config.js
+.eslintrc.cjs
+.prettierrc
+.prettierignore
+css-modules.config.ts
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# Документация разработки
+docs/
+memory-bank/
+
+# Логи
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Зависимости
+node_modules/
+
+# Временные файлы
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Переменные окружения
+.env
+.env.*
+
+# Build artifacts
+*.tsbuildinfo
+
+# Lock files (не публикуем lock файлы библиотек)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
