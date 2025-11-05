@@ -1,0 +1,40 @@
+.root {
+  --user-pic-size-local: var(--user-pic-size, 2rem);
+
+  display: inline-block;
+  width: var(--user-pic-size-local);
+  height: var(--user-pic-size-local);
+  min-width: var(--user-pic-size-local);
+  min-height: var(--user-pic-size-local);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: default;
+  user-select: none;
+  flex-shrink: 0;
+
+  // Для ссылок
+  &[href] {
+    cursor: pointer;
+    text-decoration: none;
+
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+
+    &:focus-visible {
+      outline: none;
+      box-shadow:
+        0 0 0 0.125rem var(--color-background),
+        0 0 0 0.3125rem var(--color-brand-alpha-40);
+    }
+  }
+}

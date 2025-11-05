@@ -38,6 +38,11 @@
       "import": "./dist/components/Preview/index.js",
       "require": "./dist/components/Preview/index.js"
     },
+    "./userpic": {
+      "types": "./dist/components/UserPic/index.d.ts",
+      "import": "./dist/components/UserPic/index.js",
+      "require": "./dist/components/UserPic/index.js"
+    },
     "./context": {
       "types": "./dist/context/index.d.ts",
       "import": "./dist/context/index.js",
