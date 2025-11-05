@@ -1,9 +1,9 @@
 import js from '@eslint/js';
 import tsPlugin from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
+import prettierConfig from 'eslint-config-prettier';
 import reactPlugin from 'eslint-plugin-react';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
-import prettierConfig from 'eslint-config-prettier';
 
 export default [
   {
@@ -47,11 +47,30 @@ export default [
         setInterval: 'readonly',
         clearInterval: 'readonly',
         fetch: 'readonly',
+        // DOM Types
+        HTMLElement: 'readonly',
+        HTMLTextAreaElement: 'readonly',
+        HTMLButtonElement: 'readonly',
+        HTMLDivElement: 'readonly',
+        HTMLInputElement: 'readonly',
+        HTMLAnchorElement: 'readonly',
+        HTMLSpanElement: 'readonly',
+        SVGSVGElement: 'readonly',
+        Element: 'readonly',
+        Node: 'readonly',
+        Document: 'readonly',
+        KeyboardEvent: 'readonly',
+        MouseEvent: 'readonly',
+        Event: 'readonly',
+        Storage: 'readonly',
+        FrameRequestCallback: 'readonly',
+        React: 'readonly',
+        DOMRect: 'readonly',
       },
     },
     plugins: {
       '@typescript-eslint': tsPlugin,
-      'react': reactPlugin,
+      react: reactPlugin,
       'react-hooks': reactHooksPlugin,
     },
     rules: {

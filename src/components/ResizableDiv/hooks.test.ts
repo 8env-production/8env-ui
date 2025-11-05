@@ -1,6 +1,7 @@
 import '@testing-library/jest-dom';
-import { renderHook, act, waitFor } from '@testing-library/react';
-import { useResizeState, useMouseEvents, useGlobalEventListeners } from './hooks';
+import { act, renderHook, waitFor } from '@testing-library/react';
+
+import { useGlobalEventListeners, useMouseEvents, useResizeState } from './hooks';
 
 describe('useResizeState', () => {
   beforeEach(() => {
@@ -84,21 +85,27 @@ describe('useMouseEvents', () => {
 
     const resizeState = {
       isResizing: true,
-      startWidth: 30,
-      startX: 100,
+      startWidthRef: { current: 30 },
+      startXRef: { current: 100 },
       updateWidth,
       stopResize,
-    } as any;
+    } as Partial<ReturnType<typeof useResizeState>>;
 
     const parent = document.createElement('div');
-    parent.getBoundingClientRect = jest.fn(() => ({ width: 1000 } as any));
+    parent.getBoundingClientRect = jest.fn(() => ({ width: 1000 }) as unknown as DOMRect);
     const root = document.createElement('div');
     parent.appendChild(root);
     document.body.appendChild(parent);
 
     const rootRef = { current: root };
 
-    const { result } = renderHook(() => useMouseEvents(resizeState, rootRef as any, 'right'));
+    const { result } = renderHook(() =>
+      useMouseEvents(
+        resizeState as ReturnType<typeof useResizeState>,
+        rootRef as React.RefObject<HTMLDivElement | null>,
+        'right'
+      )
+    );
 
     act(() => {
       result.current.handleMouseMove({ clientX: 200 } as MouseEvent);
@@ -116,7 +123,9 @@ describe('useGlobalEventListeners', () => {
     const mu = jest.fn();
 
     const { unmount } = renderHook(() =>
-      useGlobalEventListeners({ handleMouseMove: mv, handleMouseUp: mu } as any)
+      useGlobalEventListeners({ handleMouseMove: mv, handleMouseUp: mu } as ReturnType<
+        typeof useMouseEvents
+      >)
     );
 
     act(() => {
