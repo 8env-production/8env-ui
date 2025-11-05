@@ -2,49 +2,148 @@
  * Глобальные CSS переменные для темы
  */
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
 :root {
+  // Шрифты
+  --font-family-monospace: 'Roboto Mono', 'Monaco', 'Consolas', 'Liberation Mono', 'Ubuntu Mono', 'DejaVu Sans Mono', 'Courier New', 'Courier', monospace;
+  --font-family-sans: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
   // Светлая тема (по умолчанию)
-  --color-primary: #007bff;
-  --color-primary-hover: #0056b3;
+  // Primary - желтые/оранжевые оттенки
+  --color-primary: rgb(255 190 92);
+  --color-primary-hover: rgb(233 174 86);
+  
+  // Secondary - оставляем как было
   --color-secondary: #6c757d;
   --color-secondary-hover: #545b62;
+  
+  // Danger - оставляем как было
   --color-danger: #dc3545;
   --color-danger-hover: #bd2130;
   
+  // Текст и фон
   --color-text: #212529;
   --color-background: #ffffff;
   --color-surface: #f8f9fa;
   --color-border: #dee2e6;
   
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
-  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.15);
-  --shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.2);
+  // Brand градиенты для светлой темы
+  --color-brand-50: rgb(255 249 239);
+  --color-brand-100: rgb(255 245 231);
+  --color-brand-150: rgb(255 242 222);
+  --color-brand-200: rgb(255 236 206);
+  --color-brand-250: rgb(255 229 190);
+  --color-brand-300: rgb(255 223 174);
+  --color-brand-350: rgb(255 216 157);
+  --color-brand-400: rgb(255 210 141);
+  --color-brand-450: rgb(255 203 125);
+  --color-brand-500: rgb(255 197 108);
+  --color-brand-550: rgb(255 190 92);
+  --color-brand-600: rgb(233 174 86);
+  --color-brand-650: rgb(211 158 80);
+  --color-brand-700: rgb(189 142 75);
+  --color-brand-750: rgb(167 126 69);
+  --color-brand-800: rgb(145 110 63);
+  --color-brand-850: rgb(122 93 57);
+  --color-brand-900: rgb(100 77 51);
+  --color-brand-950: rgb(78 61 46);
+  --color-brand-1000: rgb(67 53 43);
+  
+  // Прозрачные варианты
+  --color-brand-alpha-10: rgb(255 190 92 / 0.1);
+  --color-brand-alpha-15: rgb(255 190 92 / 0.15);
+  --color-brand-alpha-20: rgb(255 190 92 / 0.2);
+  --color-brand-alpha-30: rgb(255 190 92 / 0.3);
+  --color-brand-alpha-40: rgb(255 190 92 / 0.4);
+  --color-brand-alpha-50: rgb(255 190 92 / 0.5);
+  --color-brand-alpha-60: rgb(255 190 92 / 0.6);
+  --color-brand-alpha-70: rgb(255 190 92 / 0.7);
+  --color-brand-alpha-80: rgb(255 190 92 / 0.8);
+  --color-brand-alpha-90: rgb(255 190 92 / 0.9);
+  
+  // Семантические цвета
+  --color-text-brand: rgb(189 142 75);
+  --color-text-link: rgb(233 174 86);
+  --color-text-link-hover: rgb(145 110 63);
+  
+  // Тени
+  --shadow-sm: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.12);
+  --shadow-md: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 0.25rem 1rem rgba(0, 0, 0, 0.2);
 }
 
 // Тёмная тема
 [data-theme='dark'] {
-  --color-primary: #4dabf7;
-  --color-primary-hover: #339af0;
+  // Primary - желтые/оранжевые оттенки для темной темы
+  --color-primary: rgb(255 190 92);
+  --color-primary-hover: rgb(255 197 108);
+  
+  // Secondary - адаптированный для темной темы
   --color-secondary: #868e96;
   --color-secondary-hover: #adb5bd;
+  
+  // Danger - адаптированный для темной темы
   --color-danger: #ff6b6b;
   --color-danger-hover: #fa5252;
   
+  // Текст и фон
   --color-text: #f8f9fa;
-  --color-background: #1a1b1e;
+  --color-background: rgb(34 29 34);
   --color-surface: #25262b;
   --color-border: #373a40;
   
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.5);
+  // Brand градиенты для темной темы (инвертированные)
+  --color-brand-50: rgb(56 45 40);
+  --color-brand-100: rgb(67 53 43);
+  --color-brand-150: rgb(78 61 46);
+  --color-brand-200: rgb(100 77 51);
+  --color-brand-250: rgb(122 93 57);
+  --color-brand-300: rgb(145 110 63);
+  --color-brand-350: rgb(167 126 69);
+  --color-brand-400: rgb(189 142 75);
+  --color-brand-450: rgb(211 158 80);
+  --color-brand-500: rgb(233 174 86);
+  --color-brand-550: rgb(255 190 92);
+  --color-brand-600: rgb(255 197 108);
+  --color-brand-650: rgb(255 203 125);
+  --color-brand-700: rgb(255 210 141);
+  --color-brand-750: rgb(255 216 157);
+  --color-brand-800: rgb(255 223 174);
+  --color-brand-850: rgb(255 229 190);
+  --color-brand-900: rgb(255 236 206);
+  --color-brand-950: rgb(255 242 222);
+  --color-brand-1000: rgb(255 245 231);
+  
+  // Прозрачные варианты (те же самые)
+  --color-brand-alpha-10: rgb(255 190 92 / 0.1);
+  --color-brand-alpha-15: rgb(255 190 92 / 0.15);
+  --color-brand-alpha-20: rgb(255 190 92 / 0.2);
+  --color-brand-alpha-30: rgb(255 190 92 / 0.3);
+  --color-brand-alpha-40: rgb(255 190 92 / 0.4);
+  --color-brand-alpha-50: rgb(255 190 92 / 0.5);
+  --color-brand-alpha-60: rgb(255 190 92 / 0.6);
+  --color-brand-alpha-70: rgb(255 190 92 / 0.7);
+  --color-brand-alpha-80: rgb(255 190 92 / 0.8);
+  --color-brand-alpha-90: rgb(255 190 92 / 0.9);
+  
+  // Семантические цвета
+  --color-text-brand: rgb(255 197 108);
+  --color-text-link: rgb(255 190 92);
+  --color-text-link-hover: rgb(255 210 141);
+  
+  // Тени
+  --shadow-sm: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 0.25rem 1rem rgba(0, 0, 0, 0.5);
 }
 
 // Опциональные глобальные стили для body
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: var(--font-family-sans);
   background-color: var(--color-background);
   color: var(--color-text);
   transition: background-color 0.3s ease, color 0.3s ease;
