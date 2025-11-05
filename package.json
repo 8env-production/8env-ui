@@ -18,6 +18,11 @@
       "import": "./dist/components/Logo/index.js",
       "require": "./dist/components/Logo/index.js"
     },
+    "./loader": {
+      "types": "./dist/components/Loader/index.d.ts",
+      "import": "./dist/components/Loader/index.js",
+      "require": "./dist/components/Loader/index.js"
+    },
     "./context": {
       "types": "./dist/context/index.d.ts",
       "import": "./dist/context/index.js",

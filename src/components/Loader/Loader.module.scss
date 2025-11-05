@@ -1,0 +1,83 @@
+.root {
+  --loader-size: 2rem;
+  --loader-border-width: 0.25rem;
+
+  width: var(--loader-size);
+  height: var(--loader-size);
+  border: var(--loader-border-width) solid currentColor;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+  color: var(--color-brand);
+}
+
+.size_s {
+  --loader-size: 1rem;
+  --loader-border-width: 0.2rem;
+}
+
+.size_m {
+  --loader-size: 2rem;
+}
+
+.size_l {
+  --loader-size: 3rem;
+}
+
+.size_xl {
+  --loader-size: 4rem;
+}
+
+.variant_brand {
+  color: var(--color-brand);
+}
+
+.variant_neutral {
+  color: var(--color-border);
+}
+
+.variant_contrast {
+  color: var(--color-text-brand-background);
+}
+
+.variant_success {
+  color: var(--color-success);
+}
+
+.variant_danger {
+  color: var(--color-danger);
+}
+
+.paused {
+  animation-play-state: paused;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .root {
+    animation-duration: 3s;
+  }
+}
