@@ -1,11 +1,12 @@
-import '@testing-library/jest-dom';
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { createRef } from 'react';
+
+import '@testing-library/jest-dom';
+import { fireEvent, render, screen } from '@testing-library/react';
+
+import { Modal } from './Modal';
 
 // Используем мок react-dom из __mocks__/react-dom.js
 jest.mock('react-dom');
-
-import { Modal } from './Modal';
 
 describe('Modal', () => {
   const onClose = jest.fn();
@@ -115,7 +116,7 @@ describe('Modal', () => {
 
     const closeButton = screen.getByRole('button', { name: 'Закрыть модальное окно' });
     expect(closeButton).toBeInTheDocument();
-    
+
     jest.useRealTimers();
   });
 

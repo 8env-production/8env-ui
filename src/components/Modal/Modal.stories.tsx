@@ -1,5 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
+
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { Button } from '../Button';
 import { Modal, ModalProps } from './Modal';
@@ -56,49 +57,51 @@ export default meta;
 
 type Story = StoryObj<ModalProps>;
 
-export const Playground: Story = {
-  render: (args) => {
-    const [isOpen, setOpen] = useState(args.isOpen ?? true);
+const PlaygroundComponent = (args: ModalProps) => {
+  const [isOpen, setOpen] = useState(args.isOpen ?? true);
 
-    return (
-      <>
-        <Button view="action" onClick={() => setOpen(true)}>
-          Открыть модалку
-        </Button>
-        <Modal
-          {...args}
-          isOpen={isOpen}
-          onClose={() => setOpen(false)}
-          footer={
-            args.footer ?? (
-              <>
-                <Button view="flat" onClick={() => setOpen(false)}>
-                  Отмена
-                </Button>
-                <Button view="action" onClick={() => setOpen(false)}>
-                  Сохранить
-                </Button>
-              </>
-            )
-          }
-        >
-          {args.children ?? (
+  return (
+    <>
+      <Button view="action" onClick={() => setOpen(true)}>
+        Открыть модалку
+      </Button>
+      <Modal
+        {...args}
+        isOpen={isOpen}
+        onClose={() => setOpen(false)}
+        footer={
+          args.footer ?? (
             <>
-              <p>
-                Модальное окно поддерживает заголовок, описание, произвольный контент и подвал с
-                кнопками. По умолчанию фокус замыкается внутри модалки, а фон за ней блокируется от
-                прокрутки.
-              </p>
-              <p>
-                Используйте свойства <code>size</code>, <code>closeOnOverlayClick</code>,{' '}
-                <code>hideCloseButton</code> и другие для управления поведением.
-              </p>
+              <Button view="flat" onClick={() => setOpen(false)}>
+                Отмена
+              </Button>
+              <Button view="action" onClick={() => setOpen(false)}>
+                Сохранить
+              </Button>
             </>
-          )}
-        </Modal>
-      </>
-    );
-  },
+          )
+        }
+      >
+        {args.children ?? (
+          <>
+            <p>
+              Модальное окно поддерживает заголовок, описание, произвольный контент и подвал с
+              кнопками. По умолчанию фокус замыкается внутри модалки, а фон за ней блокируется от
+              прокрутки.
+            </p>
+            <p>
+              Используйте свойства <code>size</code>, <code>closeOnOverlayClick</code>,{' '}
+              <code>hideCloseButton</code> и другие для управления поведением.
+            </p>
+          </>
+        )}
+      </Modal>
+    </>
+  );
+};
+
+export const Playground: Story = {
+  render: (args) => <PlaygroundComponent {...args} />,
   args: {
     isOpen: true,
     title: 'Заголовок модального окна',

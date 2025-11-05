@@ -1,7 +1,8 @@
 import { useState } from 'react';
+
 import type { Meta, StoryObj } from '@storybook/react';
+
 import { ResizableDiv } from './ResizableDiv';
-import type { ResizableDivProps } from './types';
 
 const rightDecorators: Meta<typeof ResizableDiv>['decorators'] = [
   (Story) => (
@@ -20,9 +21,7 @@ const rightDecorators: Meta<typeof ResizableDiv>['decorators'] = [
       >
         <div style={{ textAlign: 'center' }}>
           <h3 style={{ margin: '0 0 10px 0' }}>Main area</h3>
-          <p style={{ margin: 0 }}>
-            This area adjusts to the resizable panel
-          </p>
+          <p style={{ margin: 0 }}>This area adjusts to the resizable panel</p>
         </div>
       </div>
     </div>
@@ -66,6 +65,101 @@ const meta: Meta<typeof ResizableDiv> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+const DefaultComponent = (args: React.ComponentProps<typeof ResizableDiv>) => {
+  const [currentWidth, setCurrentWidth] = useState(args.initialWidth || 30);
+
+  return (
+    <ResizableDiv
+      {...args}
+      onWidthChange={(width) => {
+        setCurrentWidth(width);
+        args.onWidthChange?.(width);
+      }}
+      style={{
+        backgroundColor: 'var(--background-main)',
+        borderRight: '1px solid var(--border-main-color)',
+        boxShadow: '2px 0 4px var(--shadow-color)',
+      }}
+    >
+      <div
+        style={{
+          padding: '20px',
+          height: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '16px',
+        }}
+      >
+        <h2 style={{ margin: 0 }}>Sidebar</h2>
+
+        <div
+          style={{
+            padding: '12px',
+            backgroundColor: 'var(--background-dark)',
+            borderRadius: 'var(--border-radius-50)',
+            border: '1px solid var(--border-main-color)',
+          }}
+        >
+          <strong>Current width:</strong> {currentWidth.toFixed(1)}%
+        </div>
+
+        <nav style={{ flex: 1 }}>
+          <ul
+            style={{
+              listStyle: 'none',
+              padding: 0,
+              margin: 0,
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '8px',
+            }}
+          >
+            <li>
+              <a
+                href="#"
+                style={{
+                  textDecoration: 'none',
+                  padding: '8px 12px',
+                  display: 'block',
+                  borderRadius: '4px',
+                }}
+              >
+                Home
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                style={{
+                  textDecoration: 'none',
+                  padding: '8px 12px',
+                  display: 'block',
+                  borderRadius: '4px',
+                }}
+              >
+                Projects
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                style={{
+                  textDecoration: 'none',
+                  padding: '8px 12px',
+                  display: 'block',
+                  borderRadius: '4px',
+                }}
+              >
+                Settings
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </ResizableDiv>
+  );
+};
+
 export const Default: Story = {
   args: {
     initialWidth: 30,
@@ -74,100 +168,7 @@ export const Default: Story = {
     keyboardStep: 1,
     disabled: false,
   },
-  render: (args) => {
-    const [currentWidth, setCurrentWidth] = useState(args.initialWidth || 30);
-
-    return (
-      <ResizableDiv
-        {...args}
-        onWidthChange={(width) => {
-          setCurrentWidth(width);
-          args.onWidthChange?.(width);
-        }}
-        style={{
-          backgroundColor: 'var(--background-main)',
-          borderRight: '1px solid var(--border-main-color)',
-          boxShadow: '2px 0 4px var(--shadow-color)',
-        }}
-      >
-        <div
-          style={{
-            padding: '20px',
-            height: '100%',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '16px',
-          }}
-        >
-          <h2 style={{ margin: 0 }}>Sidebar</h2>
-
-          <div
-            style={{
-              padding: '12px',
-              backgroundColor: 'var(--background-dark)',
-              borderRadius: 'var(--border-radius-50)',
-              border: '1px solid var(--border-main-color)',
-            }}
-          >
-            <strong>Current width:</strong> {currentWidth.toFixed(1)}%
-          </div>
-
-          <nav style={{ flex: 1 }}>
-            <ul
-              style={{
-                listStyle: 'none',
-                padding: 0,
-                margin: 0,
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '8px',
-              }}
-            >
-              <li>
-                <a
-                  href="#"
-                  style={{
-                    textDecoration: 'none',
-                    padding: '8px 12px',
-                    display: 'block',
-                    borderRadius: '4px',
-                  }}
-                >
-                  Home
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  style={{
-                    textDecoration: 'none',
-                    padding: '8px 12px',
-                    display: 'block',
-                    borderRadius: '4px',
-                  }}
-                >
-                  Projects
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  style={{
-                    textDecoration: 'none',
-                    padding: '8px 12px',
-                    display: 'block',
-                    borderRadius: '4px',
-                  }}
-                >
-                  Settings
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </ResizableDiv>
-    );
-  },
+  render: (args) => <DefaultComponent {...args} />,
   decorators: rightDecorators,
 };
 
@@ -184,12 +185,38 @@ export const NarrowPanel: Story = {
       {...args}
       style={{ backgroundColor: 'var(--background-dark)', color: 'var(--text-color-main)' }}
     >
-      <div style={{ padding: '16px', height: '100%', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+      <div
+        style={{
+          padding: '16px',
+          height: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '12px',
+        }}
+      >
         <h3 style={{ margin: '0 0 12px 0' }}>Tools</h3>
-        <button style={{ padding: '8px', backgroundColor: 'var(--color-brand)', color: 'var(--text-color-brand-background)', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>
+        <button
+          style={{
+            padding: '8px',
+            backgroundColor: 'var(--color-brand)',
+            color: 'var(--text-color-brand-background)',
+            border: 'none',
+            borderRadius: '4px',
+            cursor: 'pointer',
+          }}
+        >
           Settings
         </button>
-        <button style={{ padding: '8px', backgroundColor: 'var(--danger)', color: 'var(--text-color-danger-background)', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>
+        <button
+          style={{
+            padding: '8px',
+            backgroundColor: 'var(--danger)',
+            color: 'var(--text-color-danger-background)',
+            border: 'none',
+            borderRadius: '4px',
+            cursor: 'pointer',
+          }}
+        >
           Remove
         </button>
       </div>
@@ -227,7 +254,10 @@ export const WithLeftResizer: Story = {
 
       <ResizableDiv
         {...args}
-        style={{ backgroundColor: 'var(--background-main)', borderLeft: '1px solid var(--border-main-color)' }}
+        style={{
+          backgroundColor: 'var(--background-main)',
+          borderLeft: '1px solid var(--border-main-color)',
+        }}
       >
         <div style={{ padding: '20px' }}>Right panel with left resizer</div>
       </ResizableDiv>
@@ -246,7 +276,17 @@ export const DisabledPanel: Story = {
   },
   render: (args) => (
     <ResizableDiv {...args} style={{ backgroundColor: 'var(--background-dark)', opacity: 0.8 }}>
-      <div style={{ padding: '20px', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center', color: 'var(--text-color-secondary)' }}>
+      <div
+        style={{
+          padding: '20px',
+          height: '100%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          textAlign: 'center',
+          color: 'var(--text-color-secondary)',
+        }}
+      >
         <h3 style={{ margin: 0 }}>🔒 Locked panel</h3>
       </div>
     </ResizableDiv>

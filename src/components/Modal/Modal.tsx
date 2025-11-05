@@ -8,8 +8,8 @@ import {
   useRef,
   useState,
 } from 'react';
-
 import { createPortal } from 'react-dom';
+
 import cn from 'classnames';
 
 import styles from './Modal.module.scss';
@@ -155,40 +155,40 @@ export const Modal = (props: ModalProps) => {
   const dialogRef = useRef<HTMLDivElement | null>(null);
   const closeButtonRef = useRef<HTMLButtonElement | null>(null);
   const previouslyFocusedElementRef = useRef<HTMLElement | null>(null);
-  const [mountNode, setMountNode] = useState<HTMLElement | null>(null);
 
   const titleId = useId();
   const descriptionId = useId();
 
-  // Определяем контейнер портала
-  useEffect(() => {
-    if (!isBrowser) return;
+  // Определяем контейнер портала с ленивой инициализацией
+  const [mountNode] = useState<HTMLElement | null>(() => {
+    if (!isBrowser) return null;
 
     const providedContainer = resolveContainer(portalContainer);
-    let container = providedContainer;
-    let createdByHook = false;
-
-    if (!container) {
-      container =
-        document.getElementById('modal-root') ||
-        document.getElementById('8env-ui-modal-root');
+    if (providedContainer) {
+      return providedContainer;
     }
+
+    let container =
+      document.getElementById('modal-root') || document.getElementById('8env-ui-modal-root');
 
     if (!container) {
       container = document.createElement('div');
       container.setAttribute('id', '8env-ui-modal-root');
+      container.setAttribute('data-created-by-modal', 'true');
       document.body.appendChild(container);
-      createdByHook = true;
     }
 
-    setMountNode(container);
+    return container;
+  });
 
+  // Очистка созданного контейнера при размонтировании
+  useEffect(() => {
     return () => {
-      if (createdByHook && container && container.childElementCount === 0) {
-        container.remove();
+      if (mountNode?.hasAttribute('data-created-by-modal') && mountNode.childElementCount === 0) {
+        mountNode.remove();
       }
     };
-  }, [portalContainer]);
+  }, [mountNode]);
 
   // Обработка закрытия по Escape
   useEffect(() => {
@@ -283,7 +283,8 @@ export const Modal = (props: ModalProps) => {
     const cancelFrame =
       typeof window !== 'undefined' && typeof window.cancelAnimationFrame === 'function'
         ? window.cancelAnimationFrame.bind(window)
-        : ((handle: number) => window.clearTimeout(handle)) as unknown as typeof window.cancelAnimationFrame;
+        : (((handle: number) =>
+            window.clearTimeout(handle)) as unknown as typeof window.cancelAnimationFrame);
 
     const frameHandle = scheduleFrame(focusDialog);
     dialog.addEventListener('keydown', handleKeyDown);
