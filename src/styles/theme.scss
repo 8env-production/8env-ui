@@ -106,14 +106,25 @@
   --component-navigation-bottom-gap: 0.5rem;
   --component-navigation-bottom-padding: 0.5rem 0 0;
 
+  /* Text component sizes */
+  --text-size-title: 2rem;
+  --text-size-body: 1rem;
+  --text-size-caption: 0.875rem;
+  --text-size-secondary: 0.875rem;
+  --text-size-tiny: 0.75rem;
+
+  /* Text component colors */
+  --text-color-main: var(--color-text-main);
+  --text-color-secondary: var(--color-secondary);
+  --text-color-tiny: #9ca3af;
+  --text-color-contrast: var(--color-text);
+
   /* Legacy aliases for draft components — keep compatibility */
   --background-main: var(--color-surface);
   --background-dark: var(--color-background-secondary);
   --background-secondary: var(--color-background-secondary);
   --border-main-color: var(--color-border);
   --border-radius-100: 1rem;
-  --text-color-secondary: var(--color-secondary);
-  --text-size-secondary: 0.875rem;
   --shadow-color: rgba(0, 0, 0, 0.12);
 }
 
@@ -214,6 +225,19 @@
   --component-navigation-accent-color: var(--color-brand);
   --component-navigation-bottom-gap: 0.5rem;
   --component-navigation-bottom-padding: 0.5rem 0 0;
+
+  /* Text component sizes */
+  --text-size-title: 2rem;
+  --text-size-body: 1rem;
+  --text-size-caption: 0.875rem;
+  --text-size-secondary: 0.875rem;
+  --text-size-tiny: 0.75rem;
+
+  /* Text component colors */
+  --text-color-main: var(--color-text-main);
+  --text-color-secondary: var(--color-secondary);
+  --text-color-tiny: #e5e7eb;
+  --text-color-contrast: var(--color-text);
 }
 
 // Опциональные глобальные стили для body

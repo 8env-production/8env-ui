@@ -1,0 +1,71 @@
+.root {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: var(--text-color-main);
+  font-family: var(--font-family-sans);
+}
+
+.title {
+  font-size: var(--text-size-title);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.caption {
+  font-size: var(--text-size-caption);
+  font-weight: 500;
+}
+
+.body {
+  font-size: var(--text-size-body);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.secondary {
+  font-size: var(--text-size-secondary);
+  color: var(--text-color-secondary);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.tiny {
+  font-size: var(--text-size-tiny);
+  color: var(--text-color-tiny);
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.uppercase {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.ellipsis {
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.color_contrast {
+  color: var(--text-color-contrast);
+}
+
+.color_brand {
+  color: var(--color-brand);
+}
+
+.withIcon {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  padding: 0 0.5rem;
+}
+
+.isItalic {
+  font-style: italic;
+}
