@@ -33,26 +33,128 @@ npm link
 npm link @8env-ui/components
 ```
 
-### Импорт компонентов
+### Настройка темы (Ctx8EnvUI)
 
-Библиотека использует **принудительный tree-shaking** - каждый компонент импортируется отдельно:
+Оберните ваше приложение в провайдер [`Ctx8EnvUI`](src/context/ThemeContext.tsx:51) для управления темой. Глобальные стили темы импортируются автоматически:
 
 ```tsx
-// Импорт компонента Button
-import { Button, ButtonProps } from '@8env-ui/components/button';
-// Импорт стилей компонента
-import '@8env-ui/components/button/styles';
+import { Ctx8EnvUI } from '@8env-ui/components/context';
 
 function App() {
   return (
+    <Ctx8EnvUI defaultTheme="light">
+      <YourApp />
+    </Ctx8EnvUI>
+  );
+}
+```
+
+### Управление темой
+
+Используйте хук [`useTheme`](src/hooks/useTheme.ts:33) для доступа к теме:
+
+```tsx
+import { useTheme } from '@8env-ui/components/hooks';
+
+function ThemeToggle() {
+  const { theme, toggleTheme, setThemeMode } = useTheme();
+
+  return (
     <div>
-      <Button label="Нажми меня" variant="primary" size="medium" />
+      <p>Текущая тема: {theme.mode}</p>
+      <button onClick={toggleTheme}>
+        Переключить на {theme.mode === 'light' ? 'тёмную' : 'светлую'}
+      </button>
+      <button onClick={() => setThemeMode('dark')}>Тёмная тема</button>
+      <button onClick={() => setThemeMode('light')}>Светлая тема</button>
     </div>
+  );
+}
+```
+
+### Параметры Ctx8EnvUI
+
+- `defaultTheme` - начальная тема ('light' или 'dark', по умолчанию 'light')
+- `persistTheme` - сохранять тему в localStorage (по умолчанию true)
+- `storageKey` - ключ для хранения темы в localStorage (по умолчанию '8env-ui-theme')
+- `customVariables` - кастомные CSS переменные для переопределения стилей темы
+
+### Кастомизация темы
+
+Вы можете переопределить любые CSS переменные темы, передав их в параметр `customVariables`:
+
+```tsx
+import { Ctx8EnvUI } from '@8env-ui/components/context';
+
+function App() {
+  return (
+    <Ctx8EnvUI
+      defaultTheme="light"
+      customVariables={{
+        // Общие переменные для обеих тем
+        common: {
+          'color-primary': '#ff0000',
+          'color-secondary': '#00ff00',
+        },
+        // Переменные только для светлой темы
+        light: {
+          'color-background': '#f5f5f5',
+        },
+        // Переменные только для тёмной темы
+        dark: {
+          'color-background': '#1a1a1a',
+        },
+      }}
+    >
+      <YourApp />
+    </Ctx8EnvUI>
+  );
+}
+```
+
+#### Доступные CSS переменные
+
+**Цвета:**
+
+- `color-primary` - основной цвет
+- `color-primary-hover` - основной цвет при наведении
+- `color-secondary` - вторичный цвет
+- `color-secondary-hover` - вторичный цвет при наведении
+- `color-danger` - цвет для опасных действий
+- `color-danger-hover` - цвет для опасных действий при наведении
+- `color-text` - цвет текста
+- `color-background` - цвет фона
+- `color-surface` - цвет поверхностей
+- `color-border` - цвет границ
+
+**Тени:**
+
+- `shadow-sm` - маленькая тень
+- `shadow-md` - средняя тень
+- `shadow-lg` - большая тень
+
+### Импорт компонентов
+
+Библиотека использует **принудительный tree-shaking** - каждый компонент импортируется отдельно. Стили компонентов импортируются автоматически вместе с компонентом:
+
+```tsx
+import { Button, ButtonProps } from '@8env-ui/components/button';
+import { Ctx8EnvUI } from '@8env-ui/components/context';
+
+function App() {
+  return (
+    <Ctx8EnvUI>
+      <div>
+        <Button label="Нажми меня" variant="primary" size="medium" />
+      </div>
+    </Ctx8EnvUI>
   );
 }
 
 export default App;
 ```
+
+> **Важно:** Глобальные стили темы и стили компонентов импортируются автоматически. Вам не нужно ничего импортировать дополнительно!
 
 ### TypeScript
 
@@ -60,19 +162,60 @@ export default App;
 
 ```tsx
 import { Button, ButtonProps } from '@8env-ui/components/button';
-import '@8env-ui/components/button/styles';
 
 const MyButton: React.FC<ButtonProps> = (props) => {
   return <Button {...props} />;
 };
 ```
 
-### Доступные компоненты
+### Доступные модули
 
-- **Button**: `@8env-ui/components/button`
-  - Стили: `@8env-ui/components/button/styles`
+**Контекст и хуки:**
 
-> **Важно:** Корневой импорт `@8env-ui/components` намеренно отключен для обеспечения оптимального размера бандла. Вы должны импортировать каждый компонент отдельно.
+- **Ctx8EnvUI** (провайдер темы): `@8env-ui/components/context`
+- **useTheme** (хук для работы с темой): `@8env-ui/components/hooks`
+- **Типы**: `@8env-ui/components/types`
+
+**Компоненты:**
+
+- **Button**: `@8env-ui/components/button` (стили импортируются автоматически)
+
+**Особенности импорта:**
+
+- Все стили (глобальные и компонентов) импортируются автоматически
+- Tree-shaking работает "из коробки" - неиспользуемые компоненты не попадут в бандл
+- Корневой импорт `@8env-ui/components` намеренно отключен для обеспечения оптимального размера бандла
+- **CSS дедуплицируется автоматически** - даже если компонент используется 100 раз, стили попадут в бандл только 1 раз
+
+> **Важно:** Вы должны импортировать каждый модуль отдельно для оптимального tree-shaking.
+
+### Дедупликация CSS
+
+Если вы используете компонент Button многократно:
+
+```tsx
+import { Button } from '@8env-ui/components/button';
+
+function App() {
+  return (
+    <>
+      <Button label="1" />
+      <Button label="2" />
+      <Button label="3" />
+      {/* ... ещё 97 раз */}
+    </>
+  );
+}
+```
+
+**CSS файл Button.css попадёт в ваш бандл только 1 раз!**
+
+Это работает потому что:
+
+1. JavaScript модуль `@8env-ui/components/button` загружается один раз
+2. CSS импортируется внутри этого модуля один раз
+3. Современные бандлеры (Webpack, Vite, Rollup) автоматически дедуплицируют CSS импорты
+4. Все экземпляры Button используют одни и те же CSS классы из одного файла
 
 ## 🚀 Возможности для разработчиков
 
@@ -175,10 +318,23 @@ npm run lint:fix
 │   ├── components/        # Компоненты библиотеки
 │   │   └── Button/
 │   │       ├── Button.tsx          # Компонент
-│   │       ├── Button.css          # Стили
+│   │       ├── Button.module.scss  # Стили (CSS Modules)
 │   │       ├── Button.test.tsx     # Тесты
 │   │       ├── Button.stories.tsx  # Storybook story
 │   │       └── index.ts            # Точка входа компонента
+│   ├── context/           # React контексты
+│   │   ├── ThemeContext.tsx        # Контекст темы
+│   │   ├── ThemeContext.test.tsx   # Тесты контекста
+│   │   └── index.ts                # Экспорты
+│   ├── hooks/             # Кастомные хуки
+│   │   ├── useTheme.ts             # Хук для работы с темой
+│   │   └── index.ts                # Экспорты
+│   ├── styles/            # Глобальные стили
+│   │   └── theme.scss              # CSS переменные темы
+│   └── types/             # TypeScript типы
+│       ├── theme.ts                # Типы темы
+│       ├── css-modules.d.ts        # Типы CSS Modules
+│       └── index.ts                # Экспорты
 ├── .eslintrc.cjs          # Конфигурация ESLint
 ├── .prettierrc            # Конфигурация Prettier
 ├── jest.config.js         # Конфигурация Jest
@@ -195,20 +351,48 @@ mkdir -p src/components/MyComponent
 ```
 
 2. Создайте файлы компонента:
-   - `MyComponent.tsx` - сам компонент
-   - `MyComponent.css` - стили
+   - `MyComponent.tsx` - сам компонент (с side-effect импортом стилей)
+   - `MyComponent.module.scss` - стили (CSS Modules)
    - `MyComponent.test.tsx` - тесты
    - `MyComponent.stories.tsx` - Storybook story
    - `index.ts` - точка входа компонента
 
-3. Создайте `index.ts` в директории компонента:
+3. В файле компонента добавьте side-effect импорт стилей:
+
+```typescript
+// MyComponent.tsx
+import React from 'react';
+
+import './MyComponent.module.scss'; // Side-effect import для автоматической загрузки
+import styles from './MyComponent.module.scss';
+
+export interface MyComponentProps {
+  text: string;
+}
+
+export const MyComponent: React.FC<MyComponentProps> = ({ text }) => {
+  return <div className={styles.container}>{text}</div>;
+};
+```
+
+4. Создайте `index.ts` в директории компонента:
 
 ```typescript
 export { MyComponent } from './MyComponent';
 export type { MyComponentProps } from './MyComponent';
 ```
 
-4. Добавьте экспорт в `package.json`:
+5. Добавьте entry point в `vite.config.ts`:
+
+```typescript
+entry: {
+  'components/Button/index': resolve(__dirname, 'src/components/Button/index.ts'),
+  'components/MyComponent/index': resolve(__dirname, 'src/components/MyComponent/index.ts'),
+  // ...
+}
+```
+
+6. Добавьте экспорт в `package.json`:
 
 ```json
 {
@@ -217,27 +401,54 @@ export type { MyComponentProps } from './MyComponent';
       "types": "./dist/components/MyComponent/index.d.ts",
       "import": "./dist/components/MyComponent/index.js",
       "require": "./dist/components/MyComponent/index.js"
-    },
-    "./my-component/styles": "./dist/components/MyComponent/MyComponent.css"
+    }
   }
 }
 ```
+
+> **Важно:** После сборки скрипт `inject-css-imports.js` автоматически добавит импорты CSS в скомпилированные файлы. Вам нужно только добавить side-effect импорт в исходный файл компонента.
 
 ## 📝 Пример компонента
 
 ```typescript
 // MyComponent.tsx
 import React from 'react';
-import './MyComponent.css';
+
+import './MyComponent.module.scss'; // Side-effect import
+import styles from './MyComponent.module.scss';
 
 export interface MyComponentProps {
   text: string;
+  variant?: 'primary' | 'secondary';
 }
 
-export const MyComponent: React.FC<MyComponentProps> = ({ text }) => {
-  return <div className="my-component">{text}</div>;
+export const MyComponent: React.FC<MyComponentProps> = ({
+  text,
+  variant = 'primary'
+}) => {
+  return (
+    <div className={`${styles.container} ${styles[`container--${variant}`]}`}>
+      {text}
+    </div>
+  );
 };
 ```
+
+## 🔄 Процесс сборки и автоматический импорт CSS
+
+При запуске `npm run build` происходит:
+
+1. **Vite** компилирует TypeScript в JavaScript и извлекает CSS из CSS Modules
+2. **TypeScript Compiler** генерирует `.d.ts` файлы
+3. **Sass** компилирует глобальные стили темы
+4. **inject-css-imports.js** автоматически добавляет импорты CSS в скомпилированные JS файлы
+
+Благодаря последнему шагу, все CSS файлы автоматически импортируются при использовании компонентов:
+
+- ESM файлы (.js) получают `import './Component.css';`
+- CommonJS файлы (.cjs) получают `require('./Component.css');`
+
+Это означает, что пользователям библиотеки не нужно вручную импортировать стили - всё работает автоматически!
 
 ## 🔧 Технологический стек
 

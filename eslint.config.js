@@ -1,11 +1,11 @@
-const js = require('@eslint/js');
-const tsPlugin = require('@typescript-eslint/eslint-plugin');
-const tsParser = require('@typescript-eslint/parser');
-const reactPlugin = require('eslint-plugin-react');
-const reactHooksPlugin = require('eslint-plugin-react-hooks');
-const prettierConfig = require('eslint-config-prettier');
+import js from '@eslint/js';
+import tsPlugin from '@typescript-eslint/eslint-plugin';
+import tsParser from '@typescript-eslint/parser';
+import reactPlugin from 'eslint-plugin-react';
+import reactHooksPlugin from 'eslint-plugin-react-hooks';
+import prettierConfig from 'eslint-config-prettier';
 
-module.exports = [
+export default [
   {
     ignores: [
       'node_modules/**',
@@ -36,6 +36,7 @@ module.exports = [
         __dirname: 'readonly',
         __filename: 'readonly',
         Buffer: 'readonly',
+        BufferEncoding: 'readonly',
         window: 'readonly',
         document: 'readonly',
         navigator: 'readonly',

@@ -1,0 +1,55 @@
+/**
+ * Глобальные CSS переменные для темы
+ */
+
+:root {
+  // Светлая тема (по умолчанию)
+  --color-primary: #007bff;
+  --color-primary-hover: #0056b3;
+  --color-secondary: #6c757d;
+  --color-secondary-hover: #545b62;
+  --color-danger: #dc3545;
+  --color-danger-hover: #bd2130;
+  
+  --color-text: #212529;
+  --color-background: #ffffff;
+  --color-surface: #f8f9fa;
+  --color-border: #dee2e6;
+  
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+// Тёмная тема
+[data-theme='dark'] {
+  --color-primary: #4dabf7;
+  --color-primary-hover: #339af0;
+  --color-secondary: #868e96;
+  --color-secondary-hover: #adb5bd;
+  --color-danger: #ff6b6b;
+  --color-danger-hover: #fa5252;
+  
+  --color-text: #f8f9fa;
+  --color-background: #1a1b1e;
+  --color-surface: #25262b;
+  --color-border: #373a40;
+  
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.5);
+}
+
+// Опциональные глобальные стили для body
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+* {
+  box-sizing: border-box;
+}

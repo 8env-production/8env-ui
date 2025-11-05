@@ -1,10 +1,10 @@
-// Переменные для цветов
-$primary-color: #007bff;
-$primary-hover: #0056b3;
-$secondary-color: #6c757d;
-$secondary-hover: #545b62;
-$danger-color: #dc3545;
-$danger-hover: #bd2130;
+// Переменные для цветов (используем CSS переменные из темы)
+$primary-color: var(--color-primary);
+$primary-hover: var(--color-primary-hover);
+$secondary-color: var(--color-secondary);
+$secondary-hover: var(--color-secondary-hover);
+$danger-color: var(--color-danger);
+$danger-hover: var(--color-danger-hover);
 
 // Переменные для размеров
 $font-size-small: 12px;
@@ -28,7 +28,7 @@ $padding-large: 12px 24px;
 
   &:hover:not(:disabled) {
     transform: translateY(-1px);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: var(--shadow-md);
   }
 
   &:active:not(:disabled) {

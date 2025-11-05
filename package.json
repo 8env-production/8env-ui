@@ -8,8 +8,22 @@
       "import": "./dist/components/Button/index.js",
       "require": "./dist/components/Button/index.js"
     },
-    "./button/styles": "./dist/components/Button/Button.css",
-    "./styles": "./dist/components/Button/Button.css"
+    "./context": {
+      "types": "./dist/context/index.d.ts",
+      "import": "./dist/context/index.js",
+      "require": "./dist/context/index.cjs"
+    },
+    "./hooks": {
+      "types": "./dist/hooks/index.d.ts",
+      "import": "./dist/hooks/index.js",
+      "require": "./dist/hooks/index.cjs"
+    },
+    "./types": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/types/index.js",
+      "require": "./dist/types/index.cjs"
+    },
+    "./styles": "./dist/styles/index.css"
   },
   "files": [
     "dist",
@@ -20,9 +34,12 @@
     "*.scss"
   ],
   "scripts": {
-    "build": "vite build && tsc -p tsconfig.build.json --emitDeclarationOnly",
+    "build": "vite build && tsc -p tsconfig.build.json --emitDeclarationOnly && npm run build:styles && npm run inject-css",
+    "build:styles": "sass src/styles/theme.scss dist/styles/index.css --no-source-map",
+    "inject-css": "tsx scripts/inject-css-imports.ts",
     "prepublishOnly": "npm run build",
     "test": "jest",
+    "test:scripts": "jest scripts/",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "lint": "eslint src --ext .ts,.tsx",
@@ -49,9 +66,9 @@
   "author": "8env-production",
   "license": "ISC",
   "type": "module",
-  "main": "./dist/components/Button/index.js",
-  "module": "./dist/components/Button/index.js",
-  "types": "./dist/components/Button/index.d.ts",
+  "main": "./dist/context/index.js",
+  "module": "./dist/context/index.js",
+  "types": "./dist/context/index.d.ts",
   "publishConfig": {
     "access": "public"
   },
@@ -81,6 +98,7 @@
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.0.1",
     "husky": "^9.1.7",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^30.2.0",
     "jest-environment-jsdom": "^30.2.0",
     "lint-staged": "^16.2.6",
@@ -88,6 +106,7 @@
     "sass": "^1.93.3",
     "storybook": "^8.6.14",
     "ts-jest": "^29.4.5",
+    "tsx": "^4.20.6",
     "typescript": "^5.9.3",
     "vite": "^6.4.1"
   },
