@@ -6,42 +6,72 @@
     "./button": {
       "types": "./dist/components/Button/index.d.ts",
       "import": "./dist/components/Button/index.js",
-      "require": "./dist/components/Button/index.js"
+      "require": "./dist/components/Button/index.cjs"
     },
     "./icon": {
       "types": "./dist/components/Icon/index.d.ts",
       "import": "./dist/components/Icon/index.js",
-      "require": "./dist/components/Icon/index.js"
+      "require": "./dist/components/Icon/index.cjs"
     },
     "./logo": {
       "types": "./dist/components/Logo/index.d.ts",
       "import": "./dist/components/Logo/index.js",
-      "require": "./dist/components/Logo/index.js"
+      "require": "./dist/components/Logo/index.cjs"
     },
     "./loader": {
       "types": "./dist/components/Loader/index.d.ts",
       "import": "./dist/components/Loader/index.js",
-      "require": "./dist/components/Loader/index.js"
+      "require": "./dist/components/Loader/index.cjs"
     },
     "./modal": {
       "types": "./dist/components/Modal/index.d.ts",
       "import": "./dist/components/Modal/index.js",
-      "require": "./dist/components/Modal/index.js"
+      "require": "./dist/components/Modal/index.cjs"
     },
     "./navigation": {
       "types": "./dist/components/Navigation/index.d.ts",
       "import": "./dist/components/Navigation/index.js",
-      "require": "./dist/components/Navigation/index.js"
+      "require": "./dist/components/Navigation/index.cjs"
     },
     "./preview": {
       "types": "./dist/components/Preview/index.d.ts",
       "import": "./dist/components/Preview/index.js",
-      "require": "./dist/components/Preview/index.js"
+      "require": "./dist/components/Preview/index.cjs"
+    },
+    "./resizablediv": {
+      "types": "./dist/components/ResizableDiv/index.d.ts",
+      "import": "./dist/components/ResizableDiv/index.js",
+      "require": "./dist/components/ResizableDiv/index.cjs"
+    },
+    "./solidloader": {
+      "types": "./dist/components/SolidLoader/index.d.ts",
+      "import": "./dist/components/SolidLoader/index.js",
+      "require": "./dist/components/SolidLoader/index.cjs"
+    },
+    "./tabs": {
+      "types": "./dist/components/Tabs/index.d.ts",
+      "import": "./dist/components/Tabs/index.js",
+      "require": "./dist/components/Tabs/index.cjs"
+    },
+    "./text": {
+      "types": "./dist/components/Text/index.d.ts",
+      "import": "./dist/components/Text/index.js",
+      "require": "./dist/components/Text/index.cjs"
+    },
+    "./textarea": {
+      "types": "./dist/components/TextArea/index.d.ts",
+      "import": "./dist/components/TextArea/index.js",
+      "require": "./dist/components/TextArea/index.cjs"
+    },
+    "./textinput": {
+      "types": "./dist/components/TextInput/index.d.ts",
+      "import": "./dist/components/TextInput/index.js",
+      "require": "./dist/components/TextInput/index.cjs"
     },
     "./userpic": {
       "types": "./dist/components/UserPic/index.d.ts",
       "import": "./dist/components/UserPic/index.js",
-      "require": "./dist/components/UserPic/index.js"
+      "require": "./dist/components/UserPic/index.cjs"
     },
     "./context": {
       "types": "./dist/context/index.d.ts",
